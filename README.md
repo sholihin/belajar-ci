@@ -3,13 +3,18 @@
 
 Pada tutorial sebelumnya, saya sudah memperkenalkan sedikit tentang MVC pada PHP framework codeigniter. nah, sekarang saya mau coba memperkenalkan sedikit tentang cara membuat Form login dengan menggunakan PHP framework codeigniter. mungkin teman-teman sudah banyak yang tahu tentang bagaimana cara membuat form login dengan PHP framework codeigniter, tapi untuk teman-teman yang belum tahu atau bahkan masih bingung bagai mana cara membuat form login dengan PHP framework codeigniter silahkan di lihat coding nya di bawah.
 
-1. Langkah awal buatlah database myweb_db.
+1. Langkah awal buatlah database `myweb_db`.
+
 ```sql
+
 CREATE DATABASE myweb_db;
+
 ```
  
-2. Buat table user pada database myweb_db.
+2. Buat table user pada database `myweb_db`.
+
 ```sql
+
 CREATE TABLE `m_user` (
   `usr_id` int(11) NOT NULL auto_increment,
   `usr_nama` varchar(75) NOT NULL default 'anymous',
@@ -18,15 +23,21 @@ CREATE TABLE `m_user` (
   `usr_isactive` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`usr_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
 ```
 
 3. Insert data pada table user.
+
 ```sql
+
 INSERT INTO m_user VALUES('','Administrator','Admin','Admin','1');
+
 ```
  
-4. Ubah database.php pada application/config.
+4. Ubah `database.php` pada `application/config`.
+
 ```php
+
 $active_group = 'default';
 $active_record = TRUE;
 
@@ -48,10 +59,13 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
 ```
 
-5. Setting `autoload.php` pada application/config menjadi.
+5. Setting `autoload.php` pada `application/config` menjadi.
+
 ```php
+
 /*
 | -------------------------------------------------------------------
 |  Auto-load Libraries
@@ -77,10 +91,13 @@ $autoload['libraries'] = array('database','session');
 */
 
 $autoload['helper'] = array('url','form');
+
 ```
 
-6. Buat controller login dengan nama login.php pada application/controllers, yang berisikan:
+6. Buat controller login dengan nama `login.php` pada `application/controllers`, yang berisikan:
+
 ```php
+
 <?php
  
  class login extends CI_Controller
@@ -167,10 +184,13 @@ $autoload['helper'] = array('url','form');
  
  }
 ?>
+
 ```
 
-7. Selanjutnya membuat model login, dimana pada model ini dikhususkan untuk koneksi pada database. simpan dengan nama m_login.php pada application/models.
+7. Selanjutnya membuat model login, dimana pada model ini dikhususkan untuk koneksi pada database. simpan dengan nama `m_login.php` pada `application/models`.
+
 ```php
+
 <?php
  class m_login extends CI_Model
  {
@@ -201,11 +221,14 @@ $autoload['helper'] = array('url','form');
  }
 
 ?>
+
 ```
 
 8. Untuk penjelasan tentang perulangan nilai array, akan saya jelaskan pada tutorial "Fungsi Foreach" selanjutnya  
-Membuat view login, dimana view ini adalah merupakan hasil yang akan dilihat oleh user. disimpan dengan nama v_login.php pada application/views.
+Membuat view login, dimana view ini adalah merupakan hasil yang akan dilihat oleh user. disimpan dengan nama `v_login.php` pada `application/views`.
+
 ```html
+
 <html>
  <head>
   <!-- menampilkan judul pada browser -->
@@ -235,10 +258,13 @@ Membuat view login, dimana view ini adalah merupakan hasil yang akan dilihat ole
   </form>
  </body>
 </html>
+
 ```
 
-9. Buat view home.php pada application/views. Dimana nanti jika proses login sukses, maka akan menampilkan home.php.
+9. Buat view `home.php` pada `application/views`. Dimana nanti jika proses login sukses, maka akan menampilkan `home.php`.
+
 ```html
+
 <html>
  <head>
   <!-- menampilkan judul pada browser -->
@@ -259,10 +285,13 @@ Membuat view login, dimana view ini adalah merupakan hasil yang akan dilihat ole
   </div>
  </body>
 </html>
+
 ```
 
-10. Membuat css login, untuk memperindah tampilan form, disimpan dengan nama login.css pada root folder CodeIgniter `xampp/htdocs/CodeIgniter/`.
+10. Membuat css login, untuk memperindah tampilan form, disimpan dengan nama `login.css` pada root folder CodeIgniter `xampp/htdocs/CodeIgniter/`.
+
 ```css
+
 /* 
 Theme Name: Away Login Theme 
 Description: Theme #1
@@ -315,10 +344,13 @@ body {
 .red{
  color:#CC0000;
 }
+
 ```
 
-11. Setting routes.php pada application/config, menjadi.
+11. Setting `routes.php` pada `application/config`, menjadi.
+
 ```php
+
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
@@ -342,6 +374,8 @@ $route['default_controller'] = "login";
 $route['404_override'] = "";
 
 $route['scaffolding_trigger'] = "post";
+
 ``` 
+
 12. Jalankan dengan membuka `http://localhost/myweb`
 Selesai. Silahkan tunggu turotial selanjutnya.
